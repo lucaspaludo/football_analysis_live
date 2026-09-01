@@ -26,7 +26,6 @@
 - [Mão na massa: o que foi construído](#️-mão-na-massa-o-que-foi-construído)
 - [Lendo o resultado: o que deu errado (de propósito)](#-lendo-o-resultado-o-que-deu-errado-de-propósito)
 - [Glossário](#-glossário)
-- [Para a próxima live](#️-para-a-próxima-live)
 
 ---
 
@@ -387,20 +386,6 @@ Este único frame contém **quatro problemas** — e cada um vira uma live:
 | **CPU × GPU** | Poucos gênios em fila × um mutirão fazendo a mesma conta simples. |
 
 ---
-
-## ⏭️ Para a próxima live
-
-O caminho completo, do pixel até o número na tela:
-
-<div align="center">
-
-`Pixel` ➜ `Frame` ➜ `Modelo` ➜ `Caixa` ➜ **`Identidade`** ➜ `Métrica`
-
-<sub>a matéria-prima · uma foto do jogo · o que aprendeu · o quê e onde · **sempre o mesmo** · km/h e metros</sub>
-
-</div>
-
-Fechamos a Live 01 na quarta etapa. **A Live 02 ataca a quinta:** dar um número fixo a cada jogador e mantê-lo — porque sem identidade dá para contar pessoas, mas nunca dizer que *uma delas* correu 8.412 metros.
 
 <div align="center">
 <br>

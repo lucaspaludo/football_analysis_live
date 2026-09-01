@@ -47,33 +47,20 @@ O pipeline é **geral** — futebol é só o domínio. Troque o conjunto de exem
 
 > Cada live tem uma página própria com **o conteúdo destrinchado**, o código daquele dia e o que rodar para reproduzir.
 
-<table>
-<thead>
-<tr>
-<th width="60">#</th>
-<th width="380">Tema</th>
-<th>O que você sai sabendo</th>
-<th width="130">Material</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center"><b>01</b></td>
-<td>
-  <a href="docs/lives/live-01-como-a-maquina-enxerga.md"><b>👁️ Como a Máquina Enxerga</b></a><br>
-  <sub>Aula zero · conceitos + primeira detecção</sub>
-</td>
-<td>
-  Pixel, frame, FPS, dataset, treino × inferência, bounding box, confiança, NMS, tracking, fine-tuning, CPU × GPU — e a <b>primeira inferência YOLO rodando</b>.
-</td>
-<td>
-  <a href="https://www.youtube.com/live/scwTUaPM91M">▶ Vídeo</a><br>
-  <a href="https://claude.ai/code/artifact/822d837a-e11b-4ff8-bb28-c06ee126f1c4">📊 Slides</a><br>
-  <a href="docs/lives/live-01-como-a-maquina-enxerga.md">📄 Notas</a>
-</td>
-</tr>
-</tbody>
-</table>
+<br>
+
+<h3>
+  <img src="https://img.shields.io/badge/LIVE-01-F2B23E?style=for-the-badge&labelColor=0F161C" align="top">
+  &nbsp;👁️ Como a Máquina Enxerga
+</h3>
+
+**Aula zero** — os conceitos de visão computacional e IA por trás do projeto, e a primeira detecção rodando.
+
+[![Assistir](https://img.shields.io/badge/▶_Assistir-FF0000?style=flat-square&logo=youtube&logoColor=white)](https://www.youtube.com/live/scwTUaPM91M)
+[![Slides](https://img.shields.io/badge/📊_Slides-F2B23E?style=flat-square&logoColor=black)](https://claude.ai/code/artifact/822d837a-e11b-4ff8-bb28-c06ee126f1c4)
+[![Notas](https://img.shields.io/badge/📄_Notas_completas-2B3137?style=flat-square)](docs/lives/live-01-como-a-maquina-enxerga.md)
+
+**O que você sai sabendo:** pixel, frame, FPS, dataset, treino × inferência, bounding box, confiança, NMS, tracking, fine-tuning, CPU × GPU — e a **primeira inferência YOLO rodando**.
 
 <div align="center">
 
@@ -99,6 +86,48 @@ O pipeline é **geral** — futebol é só o domínio. Troque o conjunto de exem
 > todo mundo é `person` (falta ajuste fino), a bola aparece com `0.33` de confiança (falta calibrar o corte),
 > há caixas duplicadas e ninguém tem um número fixo (falta rastreamento).
 > A [página da Live 01](docs/lives/live-01-como-a-maquina-enxerga.md#-lendo-o-resultado-o-que-deu-errado-de-propósito) destrincha cada um desses erros.
+
+<br>
+
+<h3>
+  <img src="https://img.shields.io/badge/LIVE-02-57C7E8?style=for-the-badge&labelColor=0F161C" align="top">
+  &nbsp;🔗 Rastreamento e Identidade
+</h3>
+
+**O detector é amnésico** — cada frame nasce do zero. A Live 02 dá um número fixo a cada jogador e o mantém do primeiro ao último frame.
+
+![Em breve](https://img.shields.io/badge/🔜_Em_breve-6C8494?style=flat-square)
+
+**O que você vai sair sabendo:** por que detectar não é acompanhar, associação de caixas entre frames, IoU, IDs estáveis, oclusão e troca de identidade — o passo que falta para dizer que *aquele* jogador correu 8.412 metros.
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+     MOLDE PARA A PRÓXIMA LIVE — copie o bloco abaixo, troque NN e os textos.
+     Cor do selo: 02=57C7E8  03=49B26B  04=E4584C  05=F2B23E ...
+
+<br>
+
+<h3>
+  <img src="https://img.shields.io/badge/LIVE-NN-57C7E8?style=for-the-badge&labelColor=0F161C" align="top">
+  &nbsp;EMOJI Título da live
+</h3>
+
+**Subtítulo** — uma frase sobre o que a live entrega.
+
+[![Assistir](https://img.shields.io/badge/▶_Assistir-FF0000?style=flat-square&logo=youtube&logoColor=white)](URL_DO_YOUTUBE)
+[![Slides](https://img.shields.io/badge/📊_Slides-F2B23E?style=flat-square&logoColor=black)](URL_DOS_SLIDES)
+[![Notas](https://img.shields.io/badge/📄_Notas_completas-2B3137?style=flat-square)](docs/lives/live-NN-slug.md)
+
+**O que você sai sabendo:** conceito, conceito, conceito — e o **resultado prático**.
+
+<div align="center">
+
+<img src="docs/assets/live-NN-demo.gif" width="100%" alt="...">
+
+<sub>▲ <b>O resultado da Live NN</b> — descrição curta</sub>
+
+</div>
+
+     ═══════════════════════════════════════════════════════════════════ -->
 
 ---
 
