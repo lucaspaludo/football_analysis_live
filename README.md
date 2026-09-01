@@ -1,7 +1,5 @@
 <div align="center">
 
-<img src="docs/assets/deteccao.gif" width="100%" alt="YOLO detectando jogadores e bola em uma partida de futebol">
-
 # ⚽ Football Computer Vision Analysis
 
 ### Transformando um vídeo comum de futebol em dados de laboratório — ao vivo, do zero.
@@ -74,31 +72,26 @@ O pipeline é **geral** — futebol é só o domínio. Troque o conjunto de exem
   <a href="docs/lives/live-01-como-a-maquina-enxerga.md">📄 Notas</a>
 </td>
 </tr>
-<tr>
-<td colspan="4" align="center">
-  <img src="docs/assets/deteccao.gif" width="92%" alt="Detecção do YOLO rodando sobre a partida — resultado da Live 01">
-  <br>
-  <sub>▲ <b>O resultado da Live 01</b> — a primeira inferência rodando sobre <code>input_videos/cobaia.mp4</code></sub>
-</td>
-</tr>
-<tr>
-<td colspan="4">
-  <table width="100%">
-  <tr>
-    <td width="50%" align="center"><b>Entrada</b> — <code>input_videos/cobaia.mp4</code></td>
-    <td width="50%" align="center"><b>Saída</b> — <code>runs/detect/predict/cobaia.avi</code></td>
-  </tr>
-  <tr>
-    <td><img src="docs/assets/frame-antes.jpg" alt="Frame original da partida"></td>
-    <td><img src="docs/assets/frame-depois.jpg" alt="Mesmo frame com as detecções do YOLO"></td>
-  </tr>
-  </table>
-  <div align="center">
-    <sub>▲ <b>O mesmo frame, antes e depois</b> — imagem crua à esquerda, o que a máquina enxergou à direita</sub>
-  </div>
-</td>
-</tr>
 </tbody>
+</table>
+
+<div align="center">
+
+<img src="docs/assets/deteccao.gif" width="100%" alt="Detecção do YOLO rodando sobre a partida — resultado da Live 01">
+
+<sub>▲ <b>O resultado da Live 01</b> — a primeira inferência rodando sobre <code>input_videos/cobaia.mp4</code></sub>
+
+</div>
+
+<table>
+<tr>
+<td width="50%" align="center"><b>Entrada</b> — <code>input_videos/cobaia.mp4</code></td>
+<td width="50%" align="center"><b>Saída</b> — <code>runs/detect/predict/cobaia.avi</code></td>
+</tr>
+<tr>
+<td><img src="docs/assets/frame-antes.jpg" alt="Frame original da partida"></td>
+<td><img src="docs/assets/frame-depois.jpg" alt="Mesmo frame com as detecções do YOLO"></td>
+</tr>
 </table>
 
 > [!NOTE]
@@ -136,41 +129,6 @@ uv run yolo_inference.py
 ```
 
 O resultado sai anotado em **`runs/detect/predict/cobaia.avi`**.
-
----
-
-## 🗺️ Roadmap
-
-```
-[✔] Live 01  Conceitos + primeira detecção .................. você está aqui
-[ ] Live 02  Rastreamento — identidade estável entre frames
-[ ] Live 03  Separação de times por cor da camisa
-[ ] Live 04  Homografia: do pixel para o metro
-[ ] Live 05  Métricas — distância, velocidade, mapa de calor
-[ ] Live 06  Fine-tuning: jogador, juiz, goleiro e bola
-[ ] Live 07  Empacotar como produto
-```
-
----
-
-## 📁 Estrutura
-
-```
-football_analysis_live/
-├── yolo_inference.py          # 🎯 primeira inferência (Live 01)
-├── main.py                    # ponto de entrada do pipeline
-├── pyproject.toml             # dependências + índice PyTorch cu118
-├── input_videos/              # vídeos de entrada  (fora do git)
-│   └── cobaia.mp4
-├── runs/detect/predict/       # saídas do Ultralytics (fora do git)
-│   └── cobaia.avi
-└── docs/
-    ├── lives/                 # 📄 uma página por live
-    └── assets/                # imagens do README
-```
-
-> [!IMPORTANT]
-> **Vídeos e pesos não vão para o repositório.** O `cobaia.avi` anotado tem ~128 MB (acima do limite do GitHub) e o `yolo26x.pt` tem ~119 MB — ambos são **gerados**, não versionados. O `.gitignore` já cuida disso; as imagens deste README foram extraídas desses mesmos arquivos.
 
 ---
 
