@@ -75,25 +75,37 @@ O pipeline é **geral** — futebol é só o domínio. Troque o conjunto de exem
 </td>
 </tr>
 <tr>
-<td align="center">02</td>
-<td><i>Rastreamento e identidade</i> <sub>— em breve</sub></td>
-<td>Dar um número fixo a cada jogador e mantê-lo entre frames.</td>
-<td align="center">🔜</td>
+<td colspan="4" align="center">
+  <img src="docs/assets/deteccao.gif" width="92%" alt="Detecção do YOLO rodando sobre a partida — resultado da Live 01">
+  <br>
+  <sub>▲ <b>O resultado da Live 01</b> — a primeira inferência rodando sobre <code>input_videos/cobaia.mp4</code></sub>
+</td>
 </tr>
 <tr>
-<td align="center">03</td>
-<td><i>Separação de times por cor</i> <sub>— em breve</sub></td>
-<td>Agrupar as camisas em dois times sem rotular ninguém.</td>
-<td align="center">🔜</td>
-</tr>
-<tr>
-<td align="center">04</td>
-<td><i>Do pixel ao metro</i> <sub>— em breve</sub></td>
-<td>Geometria de campo, distância percorrida e velocidade real.</td>
-<td align="center">🔜</td>
+<td colspan="4">
+  <table width="100%">
+  <tr>
+    <td width="50%" align="center"><b>Entrada</b> — <code>input_videos/cobaia.mp4</code></td>
+    <td width="50%" align="center"><b>Saída</b> — <code>runs/detect/predict/cobaia.avi</code></td>
+  </tr>
+  <tr>
+    <td><img src="docs/assets/frame-antes.jpg" alt="Frame original da partida"></td>
+    <td><img src="docs/assets/frame-depois.jpg" alt="Mesmo frame com as detecções do YOLO"></td>
+  </tr>
+  </table>
+  <div align="center">
+    <sub>▲ <b>O mesmo frame, antes e depois</b> — imagem crua à esquerda, o que a máquina enxergou à direita</sub>
+  </div>
+</td>
 </tr>
 </tbody>
 </table>
+
+> [!NOTE]
+> **Esse resultado ainda está errado de propósito** — e é justamente daí que sai o roteiro das próximas lives:
+> todo mundo é `person` (falta ajuste fino), a bola aparece com `0.33` de confiança (falta calibrar o corte),
+> há caixas duplicadas e ninguém tem um número fixo (falta rastreamento).
+> A [página da Live 01](docs/lives/live-01-como-a-maquina-enxerga.md#-lendo-o-resultado-o-que-deu-errado-de-propósito) destrincha cada um desses erros.
 
 ---
 
@@ -124,27 +136,6 @@ uv run yolo_inference.py
 ```
 
 O resultado sai anotado em **`runs/detect/predict/cobaia.avi`**.
-
----
-
-## 🔍 Antes e depois
-
-<table>
-<tr>
-<td width="50%" align="center"><b>Entrada</b> — <code>input_videos/cobaia.mp4</code></td>
-<td width="50%" align="center"><b>Saída</b> — <code>runs/detect/predict/cobaia.avi</code></td>
-</tr>
-<tr>
-<td><img src="docs/assets/frame-antes.jpg" alt="Frame original da partida"></td>
-<td><img src="docs/assets/frame-depois.jpg" alt="Mesmo frame com as detecções do YOLO"></td>
-</tr>
-</table>
-
-> [!NOTE]
-> **Esse resultado ainda está errado de propósito** — e é justamente daí que sai o roteiro das próximas lives:
-> todo mundo é `person` (falta ajuste fino), a bola aparece com `0.33` de confiança (falta calibrar o corte),
-> há caixas duplicadas e ninguém tem um número fixo (falta rastreamento).
-> A [página da Live 01](docs/lives/live-01-como-a-maquina-enxerga.md#-lendo-o-resultado-o-que-deu-errado-de-propósito) destrincha cada um desses erros.
 
 ---
 
