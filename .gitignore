@@ -129,3 +129,8 @@ logs/
 tmp/
 temp/
 *.tmp
+
+# ---------- Midia do README/docs (versionada) ----------
+# As regras de video/imagem acima nao valem para docs/assets:
+# gifs e frames do README precisam ir para o repositorio.
+!docs/assets/**
