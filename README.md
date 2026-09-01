@@ -91,14 +91,8 @@ O pipeline é **geral** — futebol é só o domínio. Troque o conjunto de exem
 
 <h3>
   <img src="https://img.shields.io/badge/LIVE-02-57C7E8?style=for-the-badge&labelColor=0F161C" align="top">
-  &nbsp;🔗 Rastreamento e Identidade
+  &nbsp;🔜 Em breve
 </h3>
-
-**O detector é amnésico** — cada frame nasce do zero. A Live 02 dá um número fixo a cada jogador e o mantém do primeiro ao último frame.
-
-![Em breve](https://img.shields.io/badge/🔜_Em_breve-6C8494?style=flat-square)
-
-**O que você vai sair sabendo:** por que detectar não é acompanhar, associação de caixas entre frames, IoU, IDs estáveis, oclusão e troca de identidade — o passo que falta para dizer que *aquele* jogador correu 8.412 metros.
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      MOLDE PARA A PRÓXIMA LIVE — copie o bloco abaixo, troque NN e os textos.
