@@ -62,24 +62,7 @@ ipython_config.py
 models/
 weights/
 
-# ---------- Vídeos e mídia de entrada/saída ----------
-input_videos/
-output_videos/
-*.mp4
-*.avi
-*.mov
-*.mkv
-*.webm
-*.flv
-*.wmv
-*.m4v
-
-# ---------- Saídas do Ultralytics / YOLO ----------
-runs/
-wandb/
 yolo*.pt
-*.yaml.bak
-datasets/
 
 # ---------- Stubs / cache de tracking ----------
 stubs/

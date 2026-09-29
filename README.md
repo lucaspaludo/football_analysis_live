@@ -91,8 +91,38 @@ O pipeline é **geral** — futebol é só o domínio. Troque o conjunto de exem
 
 <h3>
   <img src="https://img.shields.io/badge/LIVE-02-57C7E8?style=for-the-badge&labelColor=0F161C" align="top">
-  &nbsp;🔜 Em breve
+  &nbsp;🎓 Treinando o Modelo
 </h3>
+
+**Do generalista ao especialista** — uma GPU emprestada no Colab, 612 fotos rotuladas e uma hora de treino.
+
+[![Assistir](https://img.shields.io/badge/▶_Assistir-FF0000?style=flat-square&logo=youtube&logoColor=white)](https://www.youtube.com/live/L-HGpOOBtz8)
+[![Notebook](https://img.shields.io/badge/📓_Notebook-F37626?style=flat-square&logo=jupyter&logoColor=white)](training/futebol_training_yolo26.ipynb)
+[![Notas](https://img.shields.io/badge/📄_Notas_completas-2B3137?style=flat-square)](docs/lives/live-02-treinando-o-modelo.md)
+
+**O que você sai sabendo:** dataset rotulado, época, lote, `imgsz`, AutoBatch, early stopping, checkpoint, `best.pt` × `last.pt`, precisão × revocação, AP50, mAP — e o **modelo especialista treinado do início ao fim**.
+
+<div align="center">
+
+<img src="docs/assets/live-02-deteccao.gif" width="100%" alt="Detecção do modelo treinado — player, goalkeeper, referee e ball">
+
+<sub>▲ <b>O resultado da Live 02</b> — o modelo especialista rodando, em <code>runs/detect/predict-2/</code></sub>
+
+</div>
+
+<table>
+<tr>
+<td width="50%" align="center"><b>Live 01</b> — <code>yolo26x.pt</code> de prateleira</td>
+<td width="50%" align="center"><b>Live 02</b> — <code>models/best.pt</code> especialista</td>
+</tr>
+<tr>
+<td><img src="docs/assets/frame-depois.jpg" alt="Modelo de prateleira: tudo é person"></td>
+<td><img src="docs/assets/live-02-especialista.jpg" alt="Modelo treinado: player, referee, ball"></td>
+</tr>
+</table>
+
+> [!TIP]
+> **O mesmo frame, a mesma linha de código — só o arquivo de pesos mudou.** `person 0.44` virou `player 0.94`, `sports ball 0.33` virou `ball 0.80`, e a torcida deixou de ser detectada. O treino fechou em **mAP50 de 0.910** depois de 65 épocas.
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      MOLDE PARA A PRÓXIMA LIVE — copie o bloco abaixo, troque NN e os textos.
@@ -125,7 +155,7 @@ O pipeline é **geral** — futebol é só o domínio. Troque o conjunto de exem
 
 ---
 
-## ⚡ Rodando em 4 comandos
+## ⚡ Rodando
 
 <details open>
 <summary><b>Pré-requisitos</b></summary>
@@ -147,11 +177,17 @@ uv sync
 # 3. coloque um vídeo de partida em input_videos/cobaia.mp4
 #    (30 s, 1920x1080, 25 fps é o formato usado nas lives)
 
-# 4. primeira inferência — baixa o yolo26x.pt na primeira execução
+# 4. coloque os pesos treinados em models/best.pt
+#    gerados pelo notebook da Live 02 — training/futebol_training_yolo26.ipynb
+
+# 5. inferência
 uv run yolo_inference.py
 ```
 
-O resultado sai anotado em **`runs/detect/predict/cobaia.avi`**.
+O resultado sai anotado em **`runs/detect/predict*/cobaia.avi`** — o Ultralytics numera uma pasta nova a cada execução.
+
+> [!TIP]
+> **Quer só ver rodando, sem treinar?** Troque `MODEL_PATH` em [`yolo_inference.py`](yolo_inference.py) por `'yolo26x.pt'`: os pesos de prateleira baixam sozinhos na primeira execução e você reproduz exatamente o resultado da Live 01.
 
 ---
 
