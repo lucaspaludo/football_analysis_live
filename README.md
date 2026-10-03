@@ -160,7 +160,9 @@ O pipeline é **geral** — futebol é só o domínio. Troque o conjunto de exem
 > [!NOTE]
 > **Agora existe "o jogador 7"** — e é isso que destrava distância percorrida, velocidade e mapa de calor individual.
 >
-> Mas olhe os números: há 21 pessoas em campo e aparecem IDs como **32, 33 e 35**. O sistema criou e perdeu mais de trinta identidades em 30 segundos. O ByteTrack associa por **posição e movimento, nunca por aparência** — então quem sai do quadro volta como alguém novo. A [página da Live 03](docs/lives/live-03-rastreamento-bytetrack.md#-lendo-o-resultado) destrincha o porquê e o caminho da re-identificação.
+> Medido nos 750 frames: **18 dos 29 IDs sobrevivem a mais de 90% do clipe** e a duração mediana de um identificador é de **744 de 750 frames**. O ByteTrack segura bem quando o jogador fica visível.
+>
+> O furo está na conta: **29 IDs para cerca de 21 pessoas**. Como ele associa por **posição e movimento, nunca por aparência**, quem sai do quadro volta como alguém novo — e cada troca parte a distância percorrida daquele atleta ao meio. A [página da Live 03](docs/lives/live-03-rastreamento-bytetrack.md#os-números-reais) tem os números completos e o caminho da re-identificação.
 
 <!-- ═══════════════════════════════════════════════════════════════════════
      MOLDE PARA A PRÓXIMA LIVE — copie o bloco abaixo, troque NN e os textos.

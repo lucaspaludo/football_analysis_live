@@ -287,20 +287,43 @@ Saída em **`output_videos/tracking_cobaia.mp4`**.
   <img src="../assets/live-03-rastreamento.gif" width="90%" alt="Rastreamento em movimento, com IDs acompanhando cada jogador">
 </div>
 
-### O que funcionou
+### Os números reais
 
-**Os IDs acompanham.** Um jogador atravessa o quadro e continua com o mesmo número. É a primeira vez na série que existe um "jogador 7" em vez de "uma caixa".
+Rodando o rastreador sobre os 750 frames e contando a vida de cada identificador:
 
-**A oclusão é absorvida.** Quando dois atletas se cruzam, a segunda rodada do ByteTrack costuma segurar os dois rastros — exatamente o cenário que o algoritmo foi desenhado para resolver.
+<div align="center">
 
-### O que ainda não funciona
+| | Medido |
+|---|---:|
+| Jogadores detectados por frame | 18 a 22 · média **20,6** |
+| Juízes por frame | 1 a 4 · média 2,8 |
+| Frames com a bola detectada | **92,7%** |
+| **IDs de jogador emitidos** | **29** |
+| IDs que sobrevivem a ≥ 90% do clipe | **18** |
+| IDs que sobrevivem a ≥ 50% do clipe | 20 |
+| Duração mediana de um ID | **744** de 750 frames |
+| IDs efêmeros (≤ 5 frames) | 2 |
+
+</div>
+
+### O que funcionou — e funcionou bem
+
+**Os IDs grudam.** Oito identificadores duram os **750 frames inteiros**, e a mediana de vida é 744. Para a maior parte dos jogadores em campo, o rastro simplesmente não quebra ao longo dos 30 segundos.
+
+**A oclusão é absorvida.** Quando dois atletas se cruzam, a segunda rodada do ByteTrack costuma segurar os dois rastros — exatamente o cenário para o qual o algoritmo foi desenhado. Com apenas 2 IDs efêmeros em 29, ele raramente cria rastro-fantasma.
+
+**A bola aparece em 92,7% dos frames.** Lembrando que ela não é rastreada — isso é detecção pura, herdada do modelo da Live 02.
+
+### Onde a conta não fecha
 
 > [!IMPORTANT]
-> **Olhe os números dos IDs na imagem.** Há 21 pessoas em campo, mas aparecem identificadores como **32, 33 e 35**.
+> **29 IDs de jogador para cerca de 21 pessoas em campo.**
 >
-> Isso significa que o sistema já **criou e perdeu mais de trinta identidades** em 30 segundos de vídeo. Cada número alto é um jogador que sumiu e voltou como alguém novo.
+> São 8 identidades a mais do que deveria haver, em apenas 30 segundos. E o maior identificador emitido chega a **47** — o contador do ByteTrack é compartilhado entre jogadores, juízes e rastros que nunca chegaram a se confirmar.
 
-Esse é o limite do ByteTrack, e ele é estrutural:
+Oito IDs extras em meio minuto parece pouco. Extrapolando mal e porcamente para 90 minutos, seriam centenas — e **cada troca de ID parte a distância percorrida daquele atleta em dois pedaços, nenhum dos dois correto**.
+
+As causas são estruturais:
 
 | Situação | O que acontece | Por quê |
 |---|---|---|
@@ -311,9 +334,7 @@ Esse é o limite do ByteTrack, e ele é estrutural:
 
 A causa raiz é sempre a mesma: **o ByteTrack não olha aparência.** Para ele, um jogador é uma caixa com velocidade. Dois jogadores que ocupam posições parecidas são indistinguíveis.
 
-### Por que isso quebra a métrica
-
-Se o jogador 7 vira o jogador 32 no meio do jogo, a distância percorrida se parte em dois pedaços e **nenhum dos dois está certo**. Para somar 8.412 metros, o ID precisa sobreviver os 90 minutos.
+> 📌 **Leia os números com a cabeça certa.** Trinta segundos de plano aberto e estável é o cenário fácil: quase ninguém sai de quadro. Num jogo real há substituição, escanteio com todo mundo amontoado na área, corte de câmera e replay — e é ali que a conta degringola. O resultado deste clipe mostra que **o ByteTrack resolve o caso contínuo muito bem**, não que o problema esteja resolvido.
 
 ---
 
