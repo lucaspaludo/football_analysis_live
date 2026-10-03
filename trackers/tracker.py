@@ -1,5 +1,5 @@
 from ultralytics import YOLO
-from supervision import sv
+import supervision as sv
 import pickle
 import os
 import cv2

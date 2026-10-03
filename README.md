@@ -124,6 +124,44 @@ O pipeline é **geral** — futebol é só o domínio. Troque o conjunto de exem
 > [!TIP]
 > **O mesmo frame, a mesma linha de código — só o arquivo de pesos mudou.** `person 0.44` virou `player 0.94`, `sports ball 0.33` virou `ball 0.80`, e a torcida deixou de ser detectada. O treino fechou em **mAP50 de 0.910** depois de 65 épocas.
 
+<br>
+
+<h3>
+  <img src="https://img.shields.io/badge/LIVE-03-49B26B?style=for-the-badge&labelColor=0F161C" align="top">
+  &nbsp;🔗 Rastreamento com ByteTrack
+</h3>
+
+**Detectar não é acompanhar** — dando um número fixo a cada jogador, para que exista "o jogador 7" e não só "uma caixa".
+
+[![Notas](https://img.shields.io/badge/📄_Notas_completas-2B3137?style=flat-square)](docs/lives/live-03-rastreamento-bytetrack.md)
+[![Código](https://img.shields.io/badge/💻_tracker.py-0B2E4F?style=flat-square)](trackers/tracker.py)
+
+**O que você sai sabendo:** rastreamento, track ID, as duas rodadas do ByteTrack, filtro de Kalman, IoU, associação, oclusão, troca de ID, cache de stub — e o projeto reorganizado em módulos.
+
+<div align="center">
+
+<img src="docs/assets/live-03-rastreamento.gif" width="100%" alt="Rastreamento com IDs acompanhando cada jogador">
+
+<sub>▲ <b>O resultado da Live 03</b> — cada jogador com um ID, em <code>output_videos/tracking_cobaia.mp4</code></sub>
+
+</div>
+
+<table>
+<tr>
+<td width="50%" align="center"><b>Live 02</b> — detecta, mas é amnésico</td>
+<td width="50%" align="center"><b>Live 03</b> — cada jogador tem um ID</td>
+</tr>
+<tr>
+<td><img src="docs/assets/live-02-especialista.jpg" alt="Classes certas, nenhuma identidade"></td>
+<td><img src="docs/assets/live-03-ids.jpg" alt="Cada jogador com um número de rastreamento"></td>
+</tr>
+</table>
+
+> [!NOTE]
+> **Agora existe "o jogador 7"** — e é isso que destrava distância percorrida, velocidade e mapa de calor individual.
+>
+> Mas olhe os números: há 21 pessoas em campo e aparecem IDs como **32, 33 e 35**. O sistema criou e perdeu mais de trinta identidades em 30 segundos. O ByteTrack associa por **posição e movimento, nunca por aparência** — então quem sai do quadro volta como alguém novo. A [página da Live 03](docs/lives/live-03-rastreamento-bytetrack.md#-lendo-o-resultado) destrincha o porquê e o caminho da re-identificação.
+
 <!-- ═══════════════════════════════════════════════════════════════════════
      MOLDE PARA A PRÓXIMA LIVE — copie o bloco abaixo, troque NN e os textos.
      Cor do selo: 02=57C7E8  03=49B26B  04=E4584C  05=F2B23E ...
@@ -180,14 +218,25 @@ uv sync
 # 4. coloque os pesos treinados em models/best.pt
 #    gerados pelo notebook da Live 02 — training/futebol_training_yolo26.ipynb
 
-# 5. inferência
+# 5a. detecção pura (Lives 01 e 02)
 uv run yolo_inference.py
+
+# 5b. detecção + rastreamento com IDs (Live 03)
+uv run main.py
 ```
 
-O resultado sai anotado em **`runs/detect/predict*/cobaia.avi`** — o Ultralytics numera uma pasta nova a cada execução.
+| Comando | Saída | Live |
+|---|---|---|
+| `yolo_inference.py` | `runs/detect/predict*/cobaia.avi` | 01 e 02 |
+| `main.py` | `output_videos/tracking_cobaia.mp4` | 03 |
+
+O Ultralytics numera uma pasta `predict` nova a cada execução.
 
 > [!TIP]
 > **Quer só ver rodando, sem treinar?** Troque `MODEL_PATH` em [`yolo_inference.py`](yolo_inference.py) por `'yolo26x.pt'`: os pesos de prateleira baixam sozinhos na primeira execução e você reproduz exatamente o resultado da Live 01.
+
+> [!NOTE]
+> O `main.py` guarda o resultado do rastreamento em `stubs/track_stubs_cobaia.pkl`. A primeira execução leva alguns minutos; as seguintes carregam do cache em um instante. **Apague o stub ao trocar de modelo ou de vídeo**, senão você continua vendo o resultado antigo.
 
 ---
 
